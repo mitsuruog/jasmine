@@ -4,16 +4,16 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
   <title>introduction.js</title>
   <link href='http://fonts.googleapis.com/css?family=Lora|Istok+Web:700' rel='stylesheet' type='text/css'/>
-  <link rel="stylesheet" href="/css/docco.css"/>
-  <link rel="stylesheet" href="/css/jasmine_docco.css"/>
+  <link rel="stylesheet" href="../css/docco.css"/>
+  <link rel="stylesheet" href="../css/jasmine_docco.css"/>
   <link rel="stylesheet" href="lib/jasmine.css"/>
   <script src="lib/jasmine.js"></script>
   <script src="lib/jasmine-html.js"></script>
   <script src="lib/boot.js"></script>
   <script src="src/support/mock-ajax.js"></script>
   <script src="src/introduction.js"></script>
-  <link rel="icon" href="/images/jasmine.ico" sizes="16x16"/>
-  <link rel="icon" href="/images/jasmine_32x32.ico" sizes="32x32"/>
+  <link rel="icon" href="../images/jasmine.ico" sizes="16x16"/>
+  <link rel="icon" href="../images/jasmine_32x32.ico" sizes="32x32"/>
 </head>
 <body>
 <div id="container">
@@ -41,8 +41,12 @@
           <a class="pilcrow" href="#section-1">&#182;</a>
         </div>
         <p>Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.</p>
+        <p>JasmineはJavascriptコードをテストするための振舞い駆動開発フレームワークです。 他のJavascriptフレームワークに依存しませんし、DOMも必要としません。
+          簡単にテストを書くことができるように、きれいで分かりやすい構文を持っています。</p>
 
 <p>This guide is running against Jasmine version <span class="version">FILLED IN AT RUNTIME</span>.</p>
+<p>このガイドはバージョン <span class="version">FILLED IN AT RUNTIME</span> に対して書かれたものです。</p>
+
       </td>
       <td class="code">
         <div class="highlight">
@@ -56,18 +60,27 @@
           <a class="pilcrow" href="#section-Suites:_&lt;code&gt;describe&lt;/code&gt;_Your_Tests">&#182;</a>
         </div>
         <h2>Suites: <code>describe</code> Your Tests</h2>
+        <h2>Suites: テストを説明する</h2>
 
 <p>A test suite begins with a call to the global Jasmine function <code>describe</code> with two parameters: a string and a function. The string is a name or title for a spec suite &ndash; usually what is under test. The function is a block of code that implements the suite.</p>
+<p>テストの組み合わせ（suite）は、Jasmineのグローバル関数 <code>describe</code> へ、文字列と関数の2つのパラメータを渡して呼び出すところから始まります。
+  文字列は、（通常は）suiteにて何をテストするのかを表す名前かタイトルです。関数はsuiteを実装するコードのブロックです。</p>
 
 <h2>Specs</h2>
 
 <p>Specs are defined by calling the global Jasmine function <code>it</code>, which, like <code>describe</code> takes a string and a function. The string is a title for this spec and the function is the spec, or test. A spec contains one or more expectations that test the state of the code under test.</p>
+<p>SpecはJasmineのグローバル関数 <code>it</code> を呼び出して定義します。 <code>describe></code> と同じように文字列と関数を引数に取ります。
+  文字列はspecの仕様についてのタイトルであり、関数はspecそのもの、つまりテストコードです。 specには、テスト中の状態を確認するための期待式が1つ以上含まれている必要があります。</p>
 
 <p>An expectation in Jasmine is an assertion that can be either true or false. A spec with all true expectations is a passing spec. A spec with one or more expectations that evaluate to false is a failing spec.</p>
-      </td>
+<p>Jasmineにおける期待式は、trueまたはfalseのいずれかの状態となるアサーションです。 specにおいてすべての期待式がtrueとなる場合、テスト仕様を満たすと判定しますが、 1つ以上の期待式がfalseと評価される場合は満たさないと判定します。</p>
+
+  </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// テスト例</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c">// 期待式と一緒にテスト仕様を定義します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;contains spec with an expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">});</span>
@@ -81,14 +94,19 @@
           <a class="pilcrow" href="#section-It&amp;rsquo;s_Just_Functions">&#182;</a>
         </div>
         <h3>It&rsquo;s Just Functions</h3>
+        <h3>Itは単なる関数です。</h3>
 
 <p>Since <code>describe</code> and <code>it</code> blocks are functions, they can contain any executable code necessary to implement the test. JavaScript scoping rules apply, so variables declared in a <code>describe</code> are available to any <code>it</code> block inside the suite.</p>
+<p><code>describe</code> または <code>it</code> ブロックは関数であるため、テストを実施するために必要ないかなるコードも含めることができます。
+  Javascriptのスコープルールが適用されるため、 <code>describe</code>の中に宣言した変数は、suiteの内側のどの <code>it</code> ブロックからも利用できます</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite is just a function&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre>
+<span class="c">// suiteは単なる関数です</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A suite is just a function&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">a</span><span class="p">;</span>
-
+  <span class="c">// そしてこれがテスト仕様です</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;and so is a spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">a</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
@@ -104,12 +122,15 @@
           <a class="pilcrow" href="#section-Expectations">&#182;</a>
         </div>
         <h2>Expectations</h2>
+        <h2>期待式</h2>
 
 <p>Expectations are built with the function <code>expect</code> which takes a value, called the actual. It is chained with a Matcher function, which takes the expected value.</p>
+<p>期待式は、実行値を引数に取る <code>expect</code> 関数で構築されます。期待値を渡した matcher 関数を連結します。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;The &#39;toBe&#39; matcher compares with ===&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
+          <pre><span class="c">// 'toBe' matcherは===と同等です。</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;The &#39;toBe&#39; matcher compares with ===&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
         </div>
       </td>
     </tr>
@@ -121,10 +142,13 @@
         <h3>Matchers</h3>
 
 <p>Each matcher implements a boolean comparison between the actual value and the expected value. It is responsible for reporting to Jasmine if the expectation is true or false. Jasmine will then pass or fail the spec.</p>
+<p>それぞれの matcher は、実行値と期待値をboolean式で返す機能を実装しています。
+  それは期待式がtrueであるかfalseであるかJasmineに報告する責務を持ち、それによりJasmineは次にspecを渡すか、または失敗するか選択します。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;and has a positive case &quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre>  <span class="c">// 肯定的な評価もできます</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;and has a positive case &quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">});</span></pre>
         </div>
@@ -136,10 +160,12 @@
           <a class="pilcrow" href="#section-6">&#182;</a>
         </div>
         <p>Any matcher can evaluate to a negative assertion by chaining the call to <code>expect</code> with a <code>not</code> before calling the matcher.</p>
-      </td>
+        <p>すべてmatcherは、期待式と<code>matcher</code>の間に<code>not</code>を連結することで、否定の評価を行うことが出来ます。</p>
+    </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;and can have a negative case&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre>  <span class="c">// 否定的な評価もできます</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;and can have a negative case&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">false</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span></pre>
@@ -152,15 +178,20 @@
           <a class="pilcrow" href="#section-Included_Matchers">&#182;</a>
         </div>
         <h3>Included Matchers</h3>
+        <h3>含まれている Matcher 関数</h3>
 
 <p>Jasmine has a rich set of matchers included. Each is used here &ndash; all expectations and specs pass.</p>
+<p>Jasmineには豊富なmatcherのセットを含んでいます。 すべての期待式はこのページにて使われており、specはすべて合格するようになっています。</p>
 
 <p>There is also the ability to write <a href="https://github.com/pivotal/jasmine/wiki/Matchers">custom matchers</a> for when a project&rsquo;s domain calls for specific assertions that are not included below.</p>
+<p>さらにプロジェクトの要求などで、以下に含まれていない特別なアサーションを利用したい場合は、<a href="https://github.com/pivotal/jasmine/wiki/Matchers">カスタムmatchers</a>を書くこともできます。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Included matchers:&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// 付属のMatcher</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Included matchers:&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 
+  <span class="c">// 'toBe' matcherは===と同等です。</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBe&#39; matcher compares with ===&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
@@ -169,13 +200,16 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toEqual' matcher</span>
   <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;The &#39;toEqual&#39; matcher&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 
+    <span class="c">// シンプルなリテラル、変数に使う</span>
     <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;works for simple literals and variables&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
       <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
     <span class="p">});</span>
 
+    <span class="c">// オブジェクトに使う</span>
     <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should work for objects&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
         <span class="nx">a</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span>
@@ -189,6 +223,7 @@
     <span class="p">});</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toMatch' matcherは正規表現を扱います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toMatch&#39; matcher is for regular expressions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="s1">&#39;foo bar baz&#39;</span><span class="p">;</span>
 
@@ -197,6 +232,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toMatch</span><span class="p">(</span><span class="sr">/quux/</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toBeDefined' matcherは`undefined`との比較を行います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeDefined&#39; matcher compares against `undefined`&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
       <span class="nx">foo</span><span class="o">:</span> <span class="s1">&#39;foo&#39;</span>
@@ -206,6 +242,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">bar</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeDefined</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toBeUndefined' matcherも`undefined`との比較を行います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The `toBeUndefined` matcher compares against `undefined`&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
       <span class="nx">foo</span><span class="o">:</span> <span class="s1">&#39;foo&#39;</span>
@@ -215,6 +252,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toBeUndefined</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toBeNull' matcherはnullとの比較を行います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeNull&#39; matcher compares against null&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span>
@@ -224,6 +262,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeNull</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toBeTruthy' matcherはbooleanにキャストした結果との比較を行います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeTruthy&#39; matcher is for boolean casting testing&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span>
 
@@ -231,6 +270,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeTruthy</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toBeFalsy' matcherもbooleanにキャストした結果との比較を行います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeFalsy&#39; matcher is for boolean casting testing&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span>
 
@@ -238,6 +278,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeFalsy</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toContain' matcherは配列の中からアイテムを見つけるために使います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toContain&#39; matcher is for finding an item in an Array&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">];</span>
 
@@ -245,6 +286,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">&#39;quux&#39;</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toBeLessThan' matcherは数学的な比較を行います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeLessThan&#39; matcher is for mathematical comparisons&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=</span> <span class="mf">2.78</span><span class="p">;</span>
 
@@ -252,6 +294,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">pi</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeLessThan</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toBeGreaterThan' matcherも数学的な比較を行います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeGreaterThan&#39; is for mathematical comparisons&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=</span> <span class="mf">2.78</span><span class="p">;</span>
 
@@ -259,6 +302,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="nx">pi</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toBeCloseTo' matcherは与えられたレベルにおける十進精度の比較を行います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toBeCloseTo&#39; matcher is for precision math comparison&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">pi</span> <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=</span> <span class="mf">2.78</span><span class="p">;</span>
 
@@ -266,6 +310,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">pi</span><span class="p">).</span><span class="nx">toBeCloseTo</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 'toThrow' matcherはfunctionが例外を発生させる場合のテストに用います</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;The &#39;toThrow&#39; matcher is for testing if a function throws an exception&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
@@ -287,12 +332,16 @@
           <a class="pilcrow" href="#section-Grouping_Related_Specs_with_&lt;code&gt;describe&lt;/code&gt;">&#182;</a>
         </div>
         <h2>Grouping Related Specs with <code>describe</code></h2>
+        <h2>関連するSpecをグループ化 <code>describe</code></h2>
 
 <p>The <code>describe</code> function is for grouping related specs. The string parameter is for naming the collection of specs, and will be concatenated with specs to make a spec&rsquo;s full name. This aids in finding specs in a large suite. If you name them well, your specs read as full sentences in traditional <a href="http://en.wikipedia.org/wiki/Behavior-driven_development">BDD</a> style.</p>
+<p><code>describe</code> 関数は関連するspecをグループ化するためのものです。 文字列の引数はspecの集合を命名するためのものであり、関連するspecをつなぎ合わせた完全な名前を設定します。
+  これは、巨大なSuiteの中でspecを見つけるのに役立ちます。 specにふさわしい名前付けを行った場合、従来の <a href="http://en.wikipedia.org/wiki/Behavior-driven_development">BDD</a>スタイルの完全文として読むことができます。</p>
       </td>
       <td class="code">
         <div class="highlight">
           <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c">// これは単なる関数なので、いかなるコードも定義することが出来ます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is just a function, so it can contain any code&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
@@ -300,6 +349,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 1つ以上の期待式を含めることができます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can have more than one expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
@@ -317,14 +367,20 @@
           <a class="pilcrow" href="#section-Setup_and_Teardown">&#182;</a>
         </div>
         <h3>Setup and Teardown</h3>
+        <h3>Setup と Teardown</h3>
 
 <p>To help a test suite DRY up any duplicated setup and teardown code, Jasmine provides the global <code>beforeEach</code> and <code>afterEach</code> functions. As the name implies the <code>beforeEach</code> function is called once before each spec in the <code>describe</code> is run and the <code>afterEach</code> function is called once after each spec.</p>
+<p>setupとteardownのコードがテストSuiteでDRY原則に従えるよう、 Jasmineではグローバル関数 <code>beforeEach</code> と <code>afterEach</code> を提供しています。
+  名前が示すように、 <code>beforeEach</code> は <code>describe</code> の中の各specが実行される前に一度だけ呼び出されます。 また、 <code>afterEach</code> は各specの後に一度だけ呼び出されます。</p>
 
 <p>Here is the same set of specs written a little differently. The variable under test is defined at the top-level scope &mdash; the <code>describe</code> block &mdash;  and initialization code is moved into a <code>beforeEach</code> function. The <code>afterEach</code> function resets the variable before continuing.</p>
+<p>ここに、少し異なるように書かれたspecの同じセットがあります。
+  最上位のスコープにある <code>describe</code> ブロックに以下のテストの変数が定義され、初期化するコードが <code>beforeEach</code> 関数内にあります。 そして次のspecが継続される前に、 <code>afterEach</code> 関数にて変数がリセットされます。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec (with setup and tear-down)&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// spec（setupとtear-downを伴った）</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spec (with setup and tear-down)&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">foo</span><span class="p">;</span>
 
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -336,10 +392,12 @@
     <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="p">});</span>
 
+  <span class="c">// これは単なる関数なので、いかなるコードも定義することが出来ます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is just a function, so it can contain any code&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 1つ以上の期待式を含めることができます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can have more than one expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
@@ -354,8 +412,11 @@
           <a class="pilcrow" href="#section-Nesting_&lt;code&gt;describe&lt;/code&gt;_Blocks">&#182;</a>
         </div>
         <h3>Nesting <code>describe</code> Blocks</h3>
+        <h3><code>describe</code> ブロックのネスト</h3>
 
 <p>Calls to <code>describe</code> can be nested, with specs defined at any level. This allows a suite to be composed as a tree of functions. Before a spec is executed, Jasmine walks down the tree executing each <code>beforeEach</code> function in order. After the spec is executed, Jasmine walks through the <code>afterEach</code> functions similarly.</p>
+<p><code>describe</code> 呼び出しは、いかなるのレベルで定義されたspecと共にネストすることができます。 これにより、suiteをツリー構造のようにすることができます。
+  specを実行する前に、Jasmineはツリーを順に下って行き <code>beforeEach</code> を実行します。 そしてspecが実行された後、 <code>afterEach</code> も同様に実行します。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -371,15 +432,18 @@
     <span class="nx">foo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="p">});</span>
 
+  <span class="c">// これは単なる関数なので、いかなるコードも定義することが出来ます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is just a function, so it can contain any code&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 1つ以上の期待式を含めることができます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can have more than one expectation&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 内側にネストした2番目のdescribe</span>
   <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;nested inside a second describe&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">bar</span><span class="p">;</span>
 
@@ -387,6 +451,7 @@
       <span class="nx">bar</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">});</span>
 
+    <span class="c">// 必要に応じて両方のスコープを参照できます</span>
     <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;can reference both scopes as needed &quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">bar</span><span class="p">);</span>
     <span class="p">});</span>
@@ -401,8 +466,10 @@
           <a class="pilcrow" href="#section-Disabling_Specs_and_Suites">&#182;</a>
         </div>
         <h2>Disabling Specs and Suites</h2>
+        <h2>Specs と Suites を無効にする</h2>
 
 <p>Suites and specs can be disabled with the <code>xdescribe</code> and <code>xit</code> functions, respectively. These suites and specs are skipped when run and thus their results will not appear in the results.</p>
+<p>suiteやspecは、それぞれ <code>xdescribe</code> と <code>xit</code> とすることで無効にすることができます。 これらのsiuteやspecは実行時にスキップされ、最終的な結果に影響することはありません。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -414,6 +481,7 @@
     <span class="nx">foo</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="p">});</span>
 
+  <span class="c">// これは単なる関数なので、いかなるコードも定義することが出来ます</span>
   <span class="nx">xit</span><span class="p">(</span><span class="s2">&quot;is just a function, so it can contain any code&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">});</span>
@@ -429,8 +497,11 @@
         <h2>Spies</h2>
 
 <p>Jasmine&rsquo;s test doubles are called spies. A spy can stub any function and tracks calls to it and all arguments. There are special matchers for interacting with spies.</p>
+<p>Jasmineにおけるテストダブルはspyと呼ばれています。 spyは任意の関数のスタブとなることができ、その呼び出しやすべての引数を追跡することができます。
+  そしてspyと相互に作用する特別なmatcherがあります</p>
 
 <p>The <code>toHaveBeenCalled</code> matcher will return true if the spy was called. The <code>toHaveBeenCalledWith</code> matcher will return true if the argument list matches any of the recorded calls to the spy.</p>
+<p>spyが呼び出された場合、 <code>toHaveBeenCalled</code> はtrueを返します。 また、 <code>toHaveBeenCalledWith</code> は、引数リストがspyに記録されたいづれかの呼び出しと一致した場合、trueを返します。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -450,27 +521,33 @@
     <span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s1">&#39;another param&#39;</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// spyが呼び出されたことを追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 呼び出し回数を追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks its number of calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 呼び出す際のすべての引数を追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks all the arguments of its calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">456</span><span class="p">,</span> <span class="s1">&#39;another param&#39;</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 最も直近に呼び出されたものにアクセスすることもできます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;allows access to the most recent call&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">456</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// （直近だけでなく）任意の呼び出しもアクセスすることができます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;allows access to other calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">setBar</span><span class="p">.</span><span class="nx">calls</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 関数上ですべての実行を停止します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;stops all execution on a function&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toBeNull</span><span class="p">();</span>
   <span class="p">});</span>
@@ -486,10 +563,12 @@
         <h3>Spies: <code>andCallThrough</code></h3>
 
 <p>By chaining the spy with <code>andCallThrough</code>, the spy will still track all calls to it but in addition it will delegate to the actual implementation.</p>
+<p>spyに <code>andCallThrough</code> を連結することで、spyはすべての呼び出しを追跡しますが、指定されたもの処理は本来の実装へ委譲されます。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured to call through&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// call throughで構成されるspy</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when configured to call through&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">,</span> <span class="nx">fetchedBar</span><span class="p">;</span>
 
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -508,14 +587,17 @@
     <span class="nx">fetchedBar</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// spyが呼び出されたことを追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 他のfunctionの影響を受けてはならない</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 呼び出された場合、要求された値が返されます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;when called returns the requested value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">fetchedBar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
@@ -531,10 +613,12 @@
         <h3>Spies: <code>andReturn</code></h3>
 
 <p>By chaining the spy with <code>andReturn</code>, all calls to the function will return a specific value.</p>
+<p>spyに <code>andReturn</code> を連結することで、すべての呼び出しは指定した値を返します。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when faking a return value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// 戻り値を偽装したspy</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when faking a return value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">,</span> <span class="nx">fetchedBar</span><span class="p">;</span>
 
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -553,14 +637,17 @@
     <span class="nx">fetchedBar</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// spyが呼び出されたことを追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 他の機能の影響を受けてはならない</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 呼び出された場合、要求された値が返されます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;when called returns the requested value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">fetchedBar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">745</span><span class="p">);</span>
   <span class="p">});</span>
@@ -576,10 +663,12 @@
         <h3>Spies: <code>andCallFake</code></h3>
 
 <p>By chaining the spy with <code>andCallFake</code>, all calls to the spy will delegate to the supplied function.</p>
+<p>spyに <code>andCallFake</code> を連結することで、すべてのspyへの呼び出しは指定された関数へ委譲されます。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when faking a return value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// 戻り値を偽装したspy</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when faking a return value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">foo</span><span class="p">,</span> <span class="nx">bar</span><span class="p">,</span> <span class="nx">fetchedBar</span><span class="p">;</span>
 
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -600,14 +689,17 @@
     <span class="nx">fetchedBar</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// spyが呼び出されたことを追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">getBar</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 他の機能の影響を受けてはならない</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should not affect other functions&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">bar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 呼び出された場合、要求された値が返されます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;when called returns the requested value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">fetchedBar</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1001</span><span class="p">);</span>
   <span class="p">});</span>
@@ -623,10 +715,13 @@
         <h3>Spies: <code>createSpy</code></h3>
 
 <p>When there is not a function to spy on, <code>jasmine.createSpy</code> can create a &ldquo;bare&rdquo; spy. This spy acts as any other spy &ndash; tracking calls, arguments, etc. But there is no implementation behind it. Spies are JavaScript objects and can be used as such.</p>
+<p>上のspyの機能で足りない場合、 <code>jasmine.createSpy</code> で空のスパイを作成することができます。
+  このspyは（呼び出しや引数の追跡など）他のどのspy役もこなします。 しかし、この状態ではまだ何も実装されていません。 spyはJavascriptのオブジェクトであり、同様に扱うことができます。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when created manually&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// 独自で作成したspy</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;A spy, when created manually&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">whatAmI</span><span class="p">;</span>
 
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -635,22 +730,27 @@
     <span class="nx">whatAmI</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;am&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;spy&quot;</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// これはエラーレポートのための名称です</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is named, which helps in error reporting&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">.</span><span class="nx">identity</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;whatAmI&#39;</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// spyが呼び出されたことを追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spy was called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 呼び出し回数を追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks its number of calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 呼び出す際のすべての引数を追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks all the arguments of its calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;am&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;spy&quot;</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 最も直近に呼び出されたものにアクセスすることもできます</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;allows access to the most recent call&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">);</span>
   <span class="p">});</span>
@@ -666,10 +766,12 @@
         <h3>Spies: <code>createSpyObj</code></h3>
 
 <p>In order to create a mock with multiple spies, use <code>jasmine.createSpyObj</code> and pass an array of strings. It returns an object that has a property for each string that is a spy.</p>
+<p>複数のspyを持ったmockを作成するために、文字列の配列を渡して <code>jasmine.createSpyObj</code> を使います。 それぞれの文字列がspyのプロパティとなったオブジェクトを返します。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Multiple spies, when created manually&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// 複数のspyを独自で作成した場合</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Multiple spies, when created manually&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">tape</span><span class="p">;</span>
 
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -680,6 +782,7 @@
     <span class="nx">tape</span><span class="p">.</span><span class="nx">rewind</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
   <span class="p">});</span>
 
+  <span class="c">// 要求された機能ごとにspyを作成します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;creates spies for each requested function&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">play</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">pause</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
@@ -687,6 +790,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">rewind</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// spyが呼び出されたことを追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks that the spies were called&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">play</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">pause</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
@@ -694,6 +798,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">stop</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// 呼び出す際のすべての引数を追跡します</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;tracks all the arguments of its calls&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">tape</span><span class="p">.</span><span class="nx">rewind</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
   <span class="p">});</span>
@@ -707,17 +812,22 @@
           <a class="pilcrow" href="#section-Matching_Anything_with_&lt;code&gt;jasmine.any&lt;/code&gt;">&#182;</a>
         </div>
         <h2>Matching Anything with <code>jasmine.any</code></h2>
+        <h2><code>jasmine.any</code>で任意の値をマッチング</h2>
 
 <p><code>jasmine.any</code> takes a constructor or &ldquo;class&rdquo; name as an expected value. It returns <code>true</code> if the constructor matches the constructor of the actual value.</p>
+<p><code>jasmine.any</code> は期待値としてコンストラクタかクラス名を引数に取ります。 実行値のコンストラクタと一致する場合、<code>true</code>を返します。</p>
       </td>
       <td class="code">
         <div class="highlight">
           <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;jasmine.any&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c">// 任意の値とマッチング</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;matches any value&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">expect</span><span class="p">({}).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Object</span><span class="p">));</span>
     <span class="nx">expect</span><span class="p">(</span><span class="mi">12</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Number</span><span class="p">));</span>
   <span class="p">});</span>
 
+  <span class="c">// spyと一緒に使用する場合</span>
   <span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;when used with a spy&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;is useful for comparing arguments&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
@@ -738,12 +848,15 @@
           <a class="pilcrow" href="#section-Mocking_the_JavaScript_Clock">&#182;</a>
         </div>
         <h2>Mocking the JavaScript Clock</h2>
+        <h2>JavaScript タイマーMockを作成する</h2>
 
 <p>The Jasmine Mock Clock is available for test suites that need the ability to use <code>setTimeout</code> or <code>setInterval</code> callbacks. It makes the timer callbacks synchronous, thus making them easier to test.</p>
+<p>JasmineのMock Clockは、テストsuiteが <code>setTimeout</code> や <code>setInterval</code> のコールバックを必要とする場合にそれを可能にします。 タイマーのコールバックが同期するようになるので、テストが容易になります。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Manually ticking the Jasmine Mock Clock&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// Jasmine Mock Clockで手動タイマー</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Manually ticking the Jasmine Mock Clock&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">timerCallback</span><span class="p">;</span></pre>
         </div>
       </td>
@@ -754,6 +867,7 @@
           <a class="pilcrow" href="#section-20">&#182;</a>
         </div>
         <p>It is installed with a call to <code>jasmine.Clock.useMock</code> in a spec or suite that needs to call the timer functions.</p>
+        <p>タイマー関数を呼び出すspecやsuiteの中で、<code>jasmine.Clock.useMock</code> を呼び出すことで導入できます。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -770,10 +884,12 @@
           <a class="pilcrow" href="#section-21">&#182;</a>
         </div>
         <p>Calls to any registered callback are triggered when the clock is ticked forward via the <code>jasmine.Clock.tick</code> function, which takes a number of milliseconds.</p>
+        <p><code>jasmine.Clock.tick</code> 関数に渡されたミリ秒ごとに経過時間がチェックされ、登録されているコールバックを呼び出します。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre>  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;causes a timeout to be called synchronously&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre>  <span class="c">// timeoutが同期して呼び出されている</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;causes a timeout to be called synchronously&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="nx">timerCallback</span><span class="p">();</span>
     <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
@@ -785,6 +901,7 @@
     <span class="nx">expect</span><span class="p">(</span><span class="nx">timerCallback</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="p">});</span>
 
+  <span class="c">// intervalが同期して呼び出されている</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;causes an interval to be called synchronously&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="nx">timerCallback</span><span class="p">();</span>
@@ -811,14 +928,18 @@
           <a class="pilcrow" href="#section-Asynchronous_Support">&#182;</a>
         </div>
         <h2>Asynchronous Support</h2>
+        <h2>非同期のサポート</h2>
 
 <p>Jasmine also has support for running specs that require testing asynchronous operations.</p>
+<p>またJasmineでは、非同期処理をテストする必要があるspecの実行もサポートしています。</p>
       </td>
       <td class="code">
         <div class="highlight">
-          <pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Asynchronous specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <pre><span class="c">// 非同期spec</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Asynchronous specs&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">flag</span><span class="p">;</span>
 
+  <span class="c">// 非同期テストの準備と結果予測をサポートしています</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should support async execution of test preparation and expectations&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre>
         </div>
       </td>
@@ -829,6 +950,7 @@
           <a class="pilcrow" href="#section-23">&#182;</a>
         </div>
         <p>Specs are written by defining a set of blocks with calls to <code>runs</code>, which usually finish with an asynchronous call.</p>
+        <p>specは <code>runs</code> 呼び出しを伴うブロックにて定義されます。通常、非同期呼び出しと共に終了します。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -849,8 +971,10 @@
           <a class="pilcrow" href="#section-24">&#182;</a>
         </div>
         <p>The <code>waitsFor</code> block takes a latch function, a failure message, and a timeout.</p>
+        <p><code>waitsFor</code> ブロックはlatch回路関数、エラーメッセージ、タイムアウトを引数に取ります。</p>
 
 <p>The latch function polls until it returns true or the timeout expires, whichever comes first. If the timeout expires, the spec fails with the error message.</p>
+<p>latch回路関数は、tureかタイムアウトのいずれかが返されるまでポーリングします。 タイムアウトが発生した場合、specは障害メッセージとともに失敗します。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -867,6 +991,7 @@
           <a class="pilcrow" href="#section-25">&#182;</a>
         </div>
         <p>Once the asynchronous conditions have been met, another <code>runs</code> block defines final test behavior. This is usually expectations based on state after the asynch call returns.</p>
+        <p>一度、非同期の条件が満たされれば、他の <code>runs</code> ブロックについてもfinal（不変な）テスト動作として定義できます。 これは通常、非同期処理終了後の状態が期待結果となります。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -884,14 +1009,20 @@
           <a class="pilcrow" href="#section-The_Runner_and_Reporter">&#182;</a>
         </div>
         <h2>The Runner and Reporter</h2>
+        <h2>RunnerおよびReporter</h2>
 
 <p>Jasmine is built in JavaScript and must be included into a JS environment, such as a web page, in order to run. Like this web page.</p>
+<p>JasmineはJavascriptで構築され、実行するためにWebページなどのJS実行環境に含まれる必要があります。 例えばこのWebページのように。</p>
 
 <p>This file is written in JavaScript and is compiled into HTML via <a href="http://rtomayko.github.com/rocco/">Rocco</a>. The JavaScript file is then included, via a <code>&lt;script&gt;</code> tag, so that all of the above specs are evaluated and recorded with Jasmine. Thus Jasmine can run all of these specs. This page is then considered a &lsquo;runner.&rsquo;</p>
+<p>このファイルはJavascriptで記述され、<a href="http://rtomayko.github.com/rocco/">Rocco</a>でHTMLにコンパイルされます。
+  Javascriptファイルはこのとき、<code>&lt;script&gt;</code> タグ内に含まれ、その結果、上記すべてのspecはJasmineで評価され記録されます。 従って、Jasmineはこれらのspecをすべて実行することができるのです。 つまりこのページは ‘runner‘ と考えられます。</p>
 
 <p>Scroll down the page to see the results of the above specs. All of the specs should pass.</p>
+<p>ページをスクロールダウンして上記のspecの結果を表示してください。 もちろん、すべてのspecが合格しているはずです。</p>
 
 <p>Meanwhile, here is how a runner works to execute a Jasmine suite.</p>
+<p>これらが、runnerがJasmineのsuiteを実行する仕組みです。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -907,6 +1038,7 @@
           <a class="pilcrow" href="#section-27">&#182;</a>
         </div>
         <p>Create the <code>HTMLReporter</code>, which Jasmine calls to provide results of each spec and each suite. The Reporter is responsible for presenting results to the user.</p>
+        <p><code>HTMLReporter</code> を作成します。Jasmineはspecやsuiteごとの結果を提供するためにこれを呼び出します。 このReporterは結果をユーザに提示する責務を持ちます。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -921,6 +1053,7 @@
           <a class="pilcrow" href="#section-28">&#182;</a>
         </div>
         <p>Delegate filtering of specs to the reporter. Allows for clicking on single suites or specs in the results to only run a subset of the suite.</p>
+        <p>Reporterにフィルタリングするspecを渡してください。 単一のsuiteやspecをクリックすることで、suiteの一部分のみを実行して結果を取得することができます。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -936,10 +1069,13 @@
           <a class="pilcrow" href="#section-Test_Results">&#182;</a>
         </div>
         <p>Run all of the tests when the page finishes loading &ndash; and make sure to run any previous <code>onload</code> handler</p>
+        <p>ページのロードが完了した際に、すべてのテストを実行します。 そして、 <code>onload</code> イベントハンドラの前に実行するようにしてください。</p>
 
 <h3>Test Results</h3>
+<h3>テスト結果</h3>
 
 <p>Scroll down to see the results of all of these specs.</p>
+<p>これらすべてのspec結果を見るためにスクロールダウンしてください。</p>
       </td>
       <td class="code">
         <div class="highlight">
@@ -972,6 +1108,11 @@
 <li>The <a href="http://github.com/pivotal/jasmine-gem">Jasmine Ruby Gem</a> is for Rails, Ruby, or Ruby-friendly development</li>
 <li><a href="http://github.com/pivotal/jasmine/wiki">Other Environments</a> are supported as well</li>
 </ul>
+<ul>
+<li><a href="https://github.com/pivotal/jasmine/tree/master/dist">Standalone Release</a> はシンプル、ブラウザページ、コンソールプロジェクト用です。</li>
+<li><a href="http://github.com/pivotal/jasmine-gem">Jasmine Ruby Gem</a> は、Rails, Ruby, or Rubyに慣れている開発者用です</li>
+<li><a href="http://github.com/pivotal/jasmine/wiki">他の環境</a> 他の環境も同様にサポートされます。</li>
+</ul>
 
 <h2>Support</h2>
 
@@ -981,10 +1122,26 @@
 <li>The <a href="http://www.pivotaltracker.com/projects/10606">Backlog</a> lives at <a href="http://www.pivotaltracker.com/">Pivotal Tracker</a></li>
 <li>Follow <a href="http://twitter.com/jasminebdd">@JasmineBDD</a> on Twitter</li>
 </ul>
+<ul>
+<li><a href="http://groups.google.com/group/jasmine-js">Mailing list</a> はGoogle Groupにあります。機能の提案、pull requestsの議論、質問する素晴らしい場です。</li>
+<li><a href="http://github.com/pivotal/jasmine/issues">バグの報告</a> はGuthubへ。</li>
+<li>The <a href="http://www.pivotaltracker.com/projects/10606">Backlog</a> は <a href="http://www.pivotaltracker.com/">Pivotal Tracker</a>にあります。</li>
+<li>Twitterで <a href="http://twitter.com/jasminebdd">@JasmineBDD</a> をフォローしてください。</li>
+</ul>
 
 <h2>Thanks</h2>
 
 <p><em>Running documentation inspired by <a href="http://twitter.com/mjackson">@mjackson</a> and the 2012 <a href="http://fluentconf.com">Fluent</a> Summit.</em></p>
+<p><em>このランニングドキュメントは<a href="http://twitter.com/mjackson">@mjackson</a>と2012年の<a href="http://fluentconf.com">Fluent Summit</a>からインスパイアされたものです。</em></p>
+
+<h2>翻訳</h2>
+
+<ul>
+  <li><a href="https://github.com/mitsuruog">mitsuruog</a></li>
+  <li>監訳：<a href="https://github.com/studiomohawk">studiomohawk</a></li>
+  <li>翻訳の改善については<a href="https://github.com/mitsuruog/jasmine/issues">Github issue</a>までお願いします。</li>
+</ul>
+
 
       </td>
       <td class="code">
